@@ -1,3 +1,24 @@
 // Place all the styles related to the statuses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Zit zijn framework overwrites only for statuses */
+.status {
+  border-bottom: solid 2px #ccc;
+  padding: 5px 0px;
+}
+
+.status p {
+  margin: 7px 0;
+}
+.status.hover {
+  background: #F0f0fa;
+}
+
+.status .admin {
+  display: none;
+}
+
+.status.hover .admin {
+  display: inline;
+}
