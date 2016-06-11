@@ -7,6 +7,11 @@ class StatusesController < ApplicationController
     @statuses = Status.all
   end
 
+  # GET /statuses/1
+ # GET /statuses/1.json
+  def show
+  end
+
   # GET /statuses/new
   def new
     @status = Status.new
@@ -20,6 +25,7 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(status_params)
+
     @status.user = current_user
     respond_to do |format|
       if @status.save
