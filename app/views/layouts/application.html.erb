@@ -10,14 +10,19 @@
 
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">
-    <form class="navbar-form navbar-left" role="search">
-      <a class="brand" href="#">Twitbook</a>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-      <a class="navbar-link"><%= link_to "All Status Updates!", statuses_path %></a>
-    </form>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "All Status Updates!", statuses_path %></li>
+      <li><input type="text" class="form-control" placeholder="Search for..."></li>
+    </ul>
+    <ul class="pull-right list-inline">
+      <% if user_signed_in? %>
+      <li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+      <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to "Register", new_user_registration_path %></li>
+      <li><%= link_to "Log in", new_user_session_path %></li>
+      <% end %>
+    </ul>
   </div>
 </nav>
 
