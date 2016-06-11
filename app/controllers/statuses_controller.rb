@@ -7,11 +7,6 @@ class StatusesController < ApplicationController
     @statuses = Status.all
   end
 
-  # GET /statuses/1
-  # GET /statuses/1.json
-  def show
-  end
-
   # GET /statuses/new
   def new
     @status = Status.new
@@ -25,10 +20,10 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(status_params)
-
+    @status.user = current_user
     respond_to do |format|
       if @status.save
-        format.html { redirect_to @status, notice: 'Status was successfully created.' }
+        format.html { redirect_to statuses_path, notice: 'Status was successfully created.' }
         format.json { render :show, status: :created, location: @status }
       else
         format.html { render :new }

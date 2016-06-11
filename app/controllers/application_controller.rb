@@ -5,16 +5,17 @@ class ApplicationController < ActionController::Base
 
   def create
    Person.create(person_params)
- end
+  end
 
- def update
+  def update
    redirect_to current_account.people.find(params[:id]).tap { |person|
      person.update!(person_params)
    }
- end
- private
+  end
 
- def person_params
+  private
+
+  def person_params
       params.require(:person).permit(:name, :age)
-    end
+  end
 end
